@@ -1,10 +1,15 @@
 package org.sha.sha_data_manager.controller;
 
+import org.sha.sha_data_manager.entity.BilibiliVideoInfo;
 import org.sha.sha_data_manager.service.DataSearchService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/getData")
+import java.util.List;
+
+@RestController
+@RequestMapping("/getData")
 public class DataSearchController {
     private DataSearchService dataSearchService;
 
@@ -12,8 +17,13 @@ public class DataSearchController {
         this.dataSearchService = dataSearchService;
     }
 
-    @GetMapping
+    @GetMapping("/ping")
     public String dataSearch() {
         return dataSearchService.ping();
+    }
+
+    @GetMapping("/bilibili/latest")
+    public List<BilibiliVideoInfo> dataSearchBiliBiliLatest() {
+        return dataSearchService.getBiliBiliLatest();
     }
 }
