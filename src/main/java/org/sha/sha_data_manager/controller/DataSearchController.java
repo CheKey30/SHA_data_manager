@@ -1,5 +1,6 @@
 package org.sha.sha_data_manager.controller;
 
+import org.sha.sha_data_manager.dto.ShaPagedResponse;
 import org.sha.sha_data_manager.entity.BilibiliVideoInfo;
 import org.sha.sha_data_manager.service.DataSearchService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class DataSearchController {
     }
 
     @GetMapping("/bilibili/latest")
-    public List<BilibiliVideoInfo> dataSearchBiliBiliLatest() {
-        return dataSearchService.getBiliBiliLatest();
+    public ShaPagedResponse<BilibiliVideoInfo> getBiliBiliLatest() {
+        return ShaPagedResponse.success(dataSearchService.dataSearchBiliBiliLatest(), 1, 10);
     }
 }
