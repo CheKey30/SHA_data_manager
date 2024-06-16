@@ -1,5 +1,6 @@
 package org.sha.sha_data_manager.controller;
 
+import jakarta.annotation.Resource;
 import org.sha.sha_data_manager.dto.ShaPagedResponse;
 import org.sha.sha_data_manager.entity.BilibiliVideoInfo;
 import org.sha.sha_data_manager.service.DataSearchService;
@@ -12,12 +13,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/getData")
 public class DataSearchController {
-    private DataSearchService dataSearchService;
 
-    public DataSearchController(DataSearchService dataSearchService) {
-        this.dataSearchService = dataSearchService;
-    }
-
+    @Resource
+    DataSearchService dataSearchService;
     @GetMapping("/ping")
     public String dataSearch() {
         return dataSearchService.ping();
